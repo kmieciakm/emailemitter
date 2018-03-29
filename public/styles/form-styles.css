@@ -1,3 +1,145 @@
+body{
+    font-family: monospace;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 auto;
+    color: #222;
+    overflow-x: hidden;
+}
+
+html{
+    font-size: 16px;
+}
+
+.header{
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #2B3138;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 20px;
+}
+
+.form{
+    display: flex;
+    flex-flow: row wrap;
+    color: #fff;
+    margin: 50px 150px;
+    font-size: 1.1rem;
+    background-color: #373F47;
+    padding-bottom: 20px;
+}
+
+.form_header{
+    flex-basis: 100%;
+    background-color: #6C91C2; 
+    padding: 20px 50px;
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.form_container{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 20px;
+    box-sizing: padding-box;
+}
+
+.form_label{
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding: 10px;
+    flex-basis: 30%;
+}
+
+.form_input{
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255);
+    color: #fff;
+    background-color: transparent;
+    padding: 5px;
+    margin: 5px;
+    font-size: 1.1rem;
+    flex-basis: 60%;
+}
+
+.form_input:focus, .form_textarea:focus{
+    background-color: #2B3138;
+    outline: none;
+}
+
+.form_textarea{
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 2px;
+    background-color: transparent;
+    padding: 20px;
+    font-size: 1rem;
+    margin-top: 20px;
+    flex-basis: 60%;
+}
+
+.form_emails_list{
+    padding: 20px;
+}
+
+.form_btn{
+    color: #fff;
+    padding: 20px 40px;
+    margin-top: 20px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    border: none;
+    font-size: 1.3rem;
+    background-color: #B74747;
+}
+
+.form_btn:hover, .form_btn:focus{
+    background-color: #952525;
+    outline: none;
+}
+
 .error{
-    border-color: red;
+    border: 2px solid red;
+}
+
+@media screen and (max-width: 1200px){
+    .form{
+        margin: 50px;
+    }
+    .form_container{
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .form{
+        margin: 0;
+    }
+    .form_container{
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .form_input{
+        flex-basis: auto;
+    }
+    .form_textarea{
+        flex-basis: auto;
+        width: 80%;
+    }
+    .form_label{
+        flex-basis: auto;
+    }
 }
