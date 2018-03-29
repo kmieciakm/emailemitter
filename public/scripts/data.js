@@ -106,6 +106,22 @@ document.addEventListener("DOMContentLoaded",()=>{
         }else{
             console.log("OK");
             //prepare and send data
+            let obj = {};
+            obj.host = document.getElementsByName('host')[0].value;
+            obj.title = document.getElementsByName('title')[0].value;
+            obj.message = document.getElementsByName('message')[0].value;
+            obj.emialslist = emailsArr;
+        
+            fetch('formdata',{
+                method: "POST",
+                body: JSON.stringify(obj),
+                headers: ({
+                    'Content-Type': 'application/json'
+                })
+            }).then(res => res.json())
+            .catch(error => console.log('Error: ',error))
+            .then(res => console.log('Success'));
+
         }
     });
 

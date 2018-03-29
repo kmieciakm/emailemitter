@@ -6,18 +6,18 @@ let PORT = 3000;
 
 let app = express();
 //body-parser ---- view engine ----- middleware
-let urlencodeParser = bodyParser.urlencoded({ extended: false});
 app.set('view engine', "ejs");
 app.use('/assets', express.static(__dirname+'/public'));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 //route
 app.get('/', (req,res) => {
     res.render('form');
 });
-app.post('/formdata', urlencodeParser, function(req,res){
-    let data = req.body;
-    data.trush = 45;
-    res.send(data);
+app.post('/formdata',(req,res) => {
+    console.log(req.body);
+    res.send(req.body);
 });
 
 //server
