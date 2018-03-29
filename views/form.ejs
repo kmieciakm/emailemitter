@@ -16,31 +16,25 @@
             <div class="form_header">Message</div>
             <div class="form_container">
                 <label class="form_label" for="host">Your host(e-mail adress): </label>
-                <input class="form_input" name="host"></input>
+                <input required class="form_input" name="host"></input>
                 <label class="form_label" for="title">E-mail title: </label>
-                <input class="form_input" name="title"></input>
+                <input required class="form_input" name="title"></input>
                 <label class="form_label" for="message">Message: </label>
-                <textarea class="form_textarea" name="message" rows="15" cols="30"></textarea>
+                <textarea required class="form_textarea" name="message" rows="15" cols="30"></textarea>
             </div>
             <div class="form_header">Emials list</div>
             <div class="form_container">
                 <label class="form_label" for="add">Add email: </label>
-                <input class="form_input" name="add"></input>
+                <input class="form_input" type="email" name="add"></input>
+                <button id="btn_add" type="button" class="form_btn">Add</button>
                 <label class="form_label" for="remove">Remove emial: </label>
-                <input class="form_input" name="remove"></input>
-                <div class="form_emails_list">
-                    example@gmail.com, lorem@wp.pl, example@gmail.com, 
-                    przykład@onet.pl, xd@xd.xd, example@gmail.com, example@gmail.com, lorem@wp.pl, example@gmail.com, 
-                    przykład@onet.pl, xd@xd.xd, example@gmail.com, example@gmail.com, lorem@wp.pl, example@gmail.com, 
-                    przykład@onet.pl, xd@xd.xd, example@gmail.com, example@gmail.com, lorem@wp.pl, example@gmail.com, 
-                    przykład@onet.pl, xd@xd.xd, example@gmail.com, example@gmail.com, lorem@wp.pl, example@gmail.com, 
-                    przykład@onet.pl, xd@xd.xd, example@gmail.com, example@gmail.com, lorem@wp.pl, example@gmail.com, 
-                    przykład@onet.pl, xd@xd.xd, example@gmail.com, 
-                </div>
+                <input class="form_input" type="email" name="remove"></input>
+                <button id="btn_remove" type="button" for="remove" class="form_btn">Del</button>
+                <div class="form_emails_list"></div>
             </div>
-            <button class="form_btn" type="submit">Send</button>
+            <button class="submit_btn" id="btn_send" type="button">Send</button>
         </form>
     </main>
-    <script src="/assets/scripts/validator.js"></script>
+    <script src="/assets/scripts/data.js"></script>
 </body>
 </html>

@@ -62,15 +62,27 @@ html{
     border-bottom: 2px solid rgba(255,255,255);
     color: #fff;
     background-color: transparent;
-    padding: 5px;
+    padding: 10px;
     margin: 5px;
-    font-size: 1.1rem;
-    flex-basis: 60%;
+    font-size: 1rem;
+    flex-basis: 50%;
 }
 
 .form_input:focus, .form_textarea:focus{
     background-color: #2B3138;
     outline: none;
+}
+
+.form_btn{
+    width: 70px;
+    text-align: center;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 1.2rem;
+    margin: 5px;
+    background-color: #B74747;
 }
 
 .form_textarea{
@@ -88,7 +100,7 @@ html{
     padding: 20px;
 }
 
-.form_btn{
+.submit_btn{
     color: #fff;
     padding: 20px 40px;
     margin-top: 20px;
@@ -100,7 +112,7 @@ html{
     background-color: #B74747;
 }
 
-.form_btn:hover, .form_btn:focus{
+.submit_btn:hover, .submit_btn:focus, .form_btn:focus, .form_btn:hover{
     background-color: #952525;
     outline: none;
 }
