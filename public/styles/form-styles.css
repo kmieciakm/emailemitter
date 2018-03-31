@@ -134,6 +134,11 @@ html{
     border: 2px solid red;
 }
 
+.btn_disabled{
+    background-color: gray;
+    cursor: initial;
+}
+
 @media screen and (max-width: 1200px){
     .form{
         margin: 50px;

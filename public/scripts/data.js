@@ -20,6 +20,16 @@ document.addEventListener("DOMContentLoaded",()=>{
                     this.classList.remove('error');
                 }
             });
+            if(val.getAttribute('name')==='host'){
+                val.addEventListener('input',function(){
+                    const reg = /[0-9a-zA-Z_.-]+@gmail.com/;
+                    if (!reg.test(this.value) || !this.checkValidity()){
+                        this.classList.add('error');
+                    }else{
+                        this.classList.remove('error');
+                    }
+                });
+            }
         });
     }
 
@@ -115,6 +125,9 @@ document.addEventListener("DOMContentLoaded",()=>{
             let lang_option = document.getElementsByName('lang')[0];
             obj.lang = lang_option.options[lang_option.selectedIndex].value;
         
+            this.disabled = true;
+            this.classList.add('btn_disabled');
+
             fetch('formdata',{
                 method: "POST",
                 body: JSON.stringify(obj),
