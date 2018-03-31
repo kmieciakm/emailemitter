@@ -61,7 +61,6 @@ document.addEventListener("DOMContentLoaded",()=>{
             input_add[0].value = "";
         }
         showEmials();
-        console.log(emailsArr);
     });
 
     input_add[0].addEventListener("keyup", function(event) {
@@ -86,7 +85,6 @@ document.addEventListener("DOMContentLoaded",()=>{
             input_remove[0].value = "";
         }
         showEmials();
-        console.log(emailsArr);
     });
 
     input_remove[0].addEventListener("keyup", function(event) {

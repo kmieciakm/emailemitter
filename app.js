@@ -48,18 +48,33 @@ app.post('/formdata',(req,res) => {
         html: outputHTML // html body
     };
 
-    [...data.emailslist].forEach( val => {
-        // send mail with defined transport object
-        mailOptions.to = val;
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return console.log(error);
-            } 
-            console.log('Message sent: %s', info.messageId);
-            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));     
+    function sendEmails(){
+        return new Promise(function(resolved,reject){
+            let promises = [];
+            let newArr = [...data.emailslist];
+            
+            for(var i=0; i<newArr.length; i++){
+                let current = newArr[i];
+                promises.push(new Promise((resolve,reject)=>{
+                    mailOptions.to = current;
+                    transporter.sendMail(mailOptions, (error, info) => {
+                        if (error) {
+                            return console.log(error);
+                        } 
+                        console.log('Message sent: %s', info.messageId);
+                        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));   
+                        resolve();
+                    });
+                }));
+            }
+            Promise.all(promises).then( () => resolved());
         });
-    }); 
-    res.json(data.emailslist.length);
+    }
+
+    sendEmails().then( () =>{
+        res.json(data.emailslist.length);
+    }).catch( err => console.log(err));
+
 });
 
 app.get('/sent',(req,res) => {
