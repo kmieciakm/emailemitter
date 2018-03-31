@@ -4,23 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>EmailEmmiter</title>
+    <title>EmailEmitter</title>
     <link rel="stylesheet" type="text/css" href="/assets/styles/form-styles.css">
 </head>
 <body>
     <header>
-        <h1 class="header">Email Emmiter</h1>
+        <h1 class="header">Email Emitter</h1>
     </header>
     <main>
         <form class="form">
             <div class="form_header">Message</div>
             <div class="form_container">
-                <label class="form_label" for="host">Your host(e-mail adress): </label>
-                <input required class="form_input" name="host"></input>
+                <!-- host -->
+                <label class="form_label" for="host">Your e-mail(only gmail.com): </label>
+                <input required class="form_input" type="email" name="host"></input>
+                <!-- password -->
+                <label class="form_label" for="pass">Password: </label>
+                <input required class="form_input" type="password" name="pass"></input>
+                <!-- company -->
+                <label class="form_label" for="company">Company: </label>
+                <input required class="form_input" name="company"></input>
+                <!-- title -->
                 <label class="form_label" for="title">E-mail title: </label>
                 <input required class="form_input" name="title"></input>
+                <!-- message -->
                 <label class="form_label" for="message">Message: </label>
                 <textarea required class="form_textarea" name="message" rows="15" cols="30"></textarea>
+                <!-- language -->
+                <label class="form_label" for="lang">Language: </label>
+                <div class="select_keeper"><select class="form_select" name="lang">
+                    <option selected="selected" value="pl">PL</option>
+                    <option value="en">EN</option>
+                </select></div>
             </div>
             <div class="form_header">Emials list</div>
             <div class="form_container">

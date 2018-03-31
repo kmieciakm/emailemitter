@@ -96,6 +96,19 @@ html{
     flex-basis: 60%;
 }
 
+.select_keeper{
+    flex-basis: 60%;
+}
+
+.form_select{
+    margin: 10px;
+    padding: 5px;
+    background-color: #2B3138;
+    color: #fff;
+    font-size: 1.2rem;
+    border: 2px solid #fff;
+}
+
 .form_emails_list{
     padding: 20px;
 }
@@ -152,6 +165,9 @@ html{
         width: 80%;
     }
     .form_label{
+        flex-basis: auto;
+    }
+    .select_keeper{
         flex-basis: auto;
     }
 }

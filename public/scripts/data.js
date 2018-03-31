@@ -104,13 +104,16 @@ document.addEventListener("DOMContentLoaded",()=>{
         if(emailsArr.length===0 || handleError(inputsReq)){
             alert("Something is wrong");
         }else{
-            console.log("OK");
             //prepare and send data
             let obj = {};
             obj.host = document.getElementsByName('host')[0].value;
+            obj.pass = document.getElementsByName('pass')[0].value;
+            obj.company = document.getElementsByName('company')[0].value;
             obj.title = document.getElementsByName('title')[0].value;
             obj.message = document.getElementsByName('message')[0].value;
-            obj.emialslist = emailsArr;
+            obj.emailslist = emailsArr;
+            let lang_option = document.getElementsByName('lang')[0];
+            obj.lang = lang_option.options[lang_option.selectedIndex].value;
         
             fetch('formdata',{
                 method: "POST",
@@ -119,9 +122,11 @@ document.addEventListener("DOMContentLoaded",()=>{
                     'Content-Type': 'application/json'
                 })
             }).then(res => res.json())
-            .catch(error => console.log('Error: ',error))
-            .then(res => console.log('Success'));
-
+            .catch(error => console.log('Error: '+error))
+            .then(response => {
+                //redirect after sent all emails
+                window.location.href = `${window.location.href}sent/?amount=${response}`;
+            });
         }
     });
 
@@ -131,5 +136,4 @@ document.addEventListener("DOMContentLoaded",()=>{
             return val.value === '';
         });
     }
-
 });

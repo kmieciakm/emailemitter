@@ -2,7 +2,7 @@ let path = require('path');
 let express = require('express');
 let bodyParser = require('body-parser');
 let nodemailer = require('nodemailer');
-let PORT = 3000;
+const PORT = 3000;
 
 let app = express();
 //body-parser ---- view engine ----- middleware
@@ -15,9 +15,58 @@ app.use(bodyParser.json());
 app.get('/', (req,res) => {
     res.render('form');
 });
+
 app.post('/formdata',(req,res) => {
-    console.log(req.body);
-    res.send(req.body);
+    let data = req.body;
+    //create output
+    const footerPL = "Siema MS";
+    const footerEN = "Hello Mekka Street";
+    let outputHTML = `
+        <h1>${data.title}</h1>
+        <p>${data.message}</p>`;
+    if(data.lang==="en")
+        outputHTML += footerEN;
+    else    
+        outputHTML += footerPL;
+
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+          user: data.host,
+          pass: data.pass
+        }
+    });
+
+    // setup email data with unicode symbols
+    let mailOptions = {
+        from: `"${data.company}" ${data.host}`, // sender address
+        to: '', // list of receivers
+        subject: data.title, // Subject line
+        html: outputHTML // html body
+    };
+
+    [...data.emailslist].forEach( val => {
+        // send mail with defined transport object
+        mailOptions.to = val;
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            } 
+            console.log('Message sent: %s', info.messageId);
+            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));     
+        });
+    }); 
+    res.json(data.emailslist.length);
+});
+
+app.get('/sent',(req,res) => {
+    res.render('sent',{
+        data: req.query
+    })
+    res.end();
 });
 
 //server
